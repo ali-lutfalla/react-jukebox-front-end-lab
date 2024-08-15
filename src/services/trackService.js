@@ -46,7 +46,6 @@ const deleteTrack = async (trackId) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
         });
         return res.json();
     } catch (error) {
