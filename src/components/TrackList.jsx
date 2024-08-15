@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const TrackList = ({ trackList, updateSelected, deleteTrack, updatePlay }) => {
-    const handlePlay = (track) => {
-        updatePlay(track);
-    };
+    
     return (
         <>
             <Link to={'/add-track'}>add new track</Link>
@@ -15,7 +13,7 @@ const TrackList = ({ trackList, updateSelected, deleteTrack, updatePlay }) => {
                             <Link to={`/edit-track/${track._id}`}>update</Link>
                         </div>
                         <button onClick={() => {deleteTrack(track._id)}}>delete</button>
-                        <button onClick={() => handlePlay(track)}>Play</button>
+                        <button onClick={() => updatePlay(track)}>Play</button>
                     </li>
                 ))}
             </ul>

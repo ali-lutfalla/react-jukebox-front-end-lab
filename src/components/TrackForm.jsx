@@ -33,7 +33,7 @@ const TrackForm = (props) => {
 
   return (
     <>
-      <h1>New Banger!!!</h1>
+      {props.selected ? <h1>Edit the song</h1> : <h1>New Banger!!!</h1>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title: </label>
         <input

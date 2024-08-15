@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import * as trackService from "./services/trackService";
-import Home from './components/Home';
-import TrackForm from './components/TrackForm';
+import Home from "./components/Home";
+import TrackForm from "./components/TrackForm";
 
 const App = () => {
   const [trackList, setTrackList] = useState([]);
@@ -23,7 +23,7 @@ const App = () => {
     try {
       const newTrack = await trackService.create(formData);
       setTrackList([...trackList, newTrack]);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -58,7 +58,7 @@ const App = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchTracks = async () => {
@@ -76,9 +76,40 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home trackList={trackList} updateSelected={updateSelected} selected={selected} deleteTrack={deleteTrack}/>} play={play} updatePlay={updatePlay} setPlay={setPlay} />
-        <Route path="/add-track" element={<TrackForm handleAddTrack={handleAddTrack} handleUpdateTrack={handleUpdateTrack} selected={selected}/>} />
-        < Route path="/edit-track/:trackId" element={<TrackForm handleAddTrack={handleAddTrack} handleUpdateTrack={handleUpdateTrack} selected={selected}/>}/>
+        <Route
+          path="/"
+          element={
+            <Home
+              trackList={trackList}
+              updateSelected={updateSelected}
+              selected={selected}
+              deleteTrack={deleteTrack}
+              play={play}
+              updatePlay={updatePlay}
+              setPlay={setPlay}
+            />
+          }
+        />
+        <Route
+          path="/add-track"
+          element={
+            <TrackForm
+              handleAddTrack={handleAddTrack}
+              handleUpdateTrack={handleUpdateTrack}
+              selected={selected}
+            />
+          }
+        />
+        <Route
+          path="/edit-track/:trackId"
+          element={
+            <TrackForm
+              handleAddTrack={handleAddTrack}
+              handleUpdateTrack={handleUpdateTrack}
+              selected={selected}
+            />
+          }
+        />
       </Routes>
     </>
   );
